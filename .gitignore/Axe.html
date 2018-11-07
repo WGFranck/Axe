@@ -2,8 +2,11 @@
 <head>
 <title>Graphe</title>
 <meta charset="utf-8"/>
-<script type="text/javascript">
 
+</head>
+<body onload="main()">
+<h1>Graphe</h1>
+<script type="text/javascript">
 function main() {
     var xmin = -10
 	var xmax = 10
@@ -12,21 +15,86 @@ function main() {
 	var ymax = 10
 	var ygrad = 1
 	var plot = document.getElementById("curve");
-	var pen = plot.getContext("2d")
-	var y0 = plot.height*(-ymax)/(ymin-ymax)
-	var x0 = plot.width*()
+	var pen = plot.getContext("2d");
+	var y0 = plot.height*(-ymax/(ymin-ymax));
+	var x0 = plot.width*(-xmin/(xmax-xmin));
+
 	pen.beginPath();
-	pen.moveTo(0,y0);
-	pen.lineTo(plot.width,y0);
+	pen.moveTo(0,y0); // axe X gauche
+	pen.lineTo(plot.width,y0); // vers droite
 	pen.stroke();
 
-	}
-</script>
-</head>
-<body onload="main()">
-<h1>Graphe</h1>
+	pen.moveTo(x0,0); // axe Y haut
+	pen.lineTo(x0,plot.height); // vers bas
+	pen.stroke();
 
+	pen.moveTo(plot.width,y0); // axe X flèche haut
+	pen.lineTo(plot.width-10,y0-5);
+	pen.stroke();
+
+	pen.moveTo(plot.width,y0); // axe X flèche bas
+	pen.lineTo(plot.width-10,y0+5);
+	pen.stroke();
+
+	pen.moveTo(x0,0); // axe Y flèche gauche
+	pen.lineTo(x0-5,10);
+	pen.stroke();
+
+	pen.moveTo(x0,0); // axe Y flèche droite
+	pen.lineTo(x0+5,10);
+	pen.stroke();
+
+	var xd = Math.floor(plot.width*(xmax-xmin)/(xmax-xmin)); // xmax pixel
+	var xg = Math.ceil(plot.width*(xmin-xmin)/(xmax-xmin)); // xmin pixel
+    var xe = plot.width*(xgrad-xmin)/(xmax-xmin); // variation graduation en X
+    var xegrad = xe - x0 // graduation en X
+    var x = x0 
+
+    while (x<xd) {
+  		pen.moveTo(x+xegrad,y0); // axe droite
+  		pen.lineTo(x+xegrad,y0-10);
+  		pen.stroke();
+  		x = x + xegrad	
+  	}
+
+  	var x = x0
+
+  	while (x>xegrad) {
+		pen.moveTo(x-xegrad,y0); // axe gauche
+		pen.lineTo(x-xegrad,y0-10);
+		pen.stroke();
+		x = x - xegrad
+	}
+
+	var yh = Math.floor(plot.height*(ymax-ymax)/(ymin-ymax));
+   	var yb = Math.ceil(plot.height*(ymin-ymax)/(ymin-ymax));
+    var ye = plot.height*(ygrad-ymax)/(ymin-ymax);
+    var yegrad = y0 - ye
+    var y = y0
+
+	while (y>yh) {
+    	pen.moveTo(x0,y-yegrad);
+    	pen.lineTo(x0+10,y-yegrad);
+    	pen.stroke();
+    	y = y - yegrad
+    }
+
+    var y = y0
+
+    while (y<yb) {
+    	pen.moveTo(x0,y+yegrad);
+    	pen.lineTo(x0+10,y+yegrad);
+    	pen.stroke();
+    	y = y + yegrad
+    }
+   
+    
+
+
+
+}	
+</script>
 <canvas id="curve" width="800" height="450" style="background: yellow"/>
 
-<body/>
-<html>
+</body>
+</html>
