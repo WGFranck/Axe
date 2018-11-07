@@ -66,14 +66,14 @@ function main() {
 		x = x - xegrad
 	}
 
-	var yh = Math.floor(plot.height*(ymax-ymax)/(ymin-ymax));
-   	var yb = Math.ceil(plot.height*(ymin-ymax)/(ymin-ymax));
-    var ye = plot.height*(ygrad-ymax)/(ymin-ymax);
-    var yegrad = y0 - ye
+	var yh = Math.floor(plot.height*(ymax-ymax)/(ymin-ymax)); // ymax pixel
+   	var yb = Math.ceil(plot.height*(ymin-ymax)/(ymin-ymax)); // ymin pixel
+    var ye = plot.height*(ygrad-ymax)/(ymin-ymax); // variation graduation en Y
+    var yegrad = y0 - ye // graduation en Y
     var y = y0
 
 	while (y>yh) {
-    	pen.moveTo(x0,y-yegrad);
+    	pen.moveTo(x0,y-yegrad); // axe haut
     	pen.lineTo(x0+10,y-yegrad);
     	pen.stroke();
     	y = y - yegrad
@@ -82,7 +82,7 @@ function main() {
     var y = y0
 
     while (y<yb) {
-    	pen.moveTo(x0,y+yegrad);
+    	pen.moveTo(x0,y+yegrad); // axe bas
     	pen.lineTo(x0+10,y+yegrad);
     	pen.stroke();
     	y = y + yegrad
