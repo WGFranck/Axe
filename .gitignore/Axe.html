@@ -51,7 +51,7 @@ function main() {
     var x = x0 
 
     while (x<xd) {
-  		pen.moveTo(x+xegrad,y0); // axe droite
+  		pen.moveTo(x+xegrad,y0+10); // axe droite
   		pen.lineTo(x+xegrad,y0-10);
   		pen.stroke();
   		x = x + xegrad	
@@ -60,7 +60,7 @@ function main() {
   	var x = x0
 
   	while (x>xegrad) {
-		pen.moveTo(x-xegrad,y0); // axe gauche
+		pen.moveTo(x-xegrad,y0+10); // axe gauche
 		pen.lineTo(x-xegrad,y0-10);
 		pen.stroke();
 		x = x - xegrad
@@ -73,7 +73,7 @@ function main() {
     var y = y0
 
 	while (y>yh) {
-    	pen.moveTo(x0,y-yegrad); // axe haut
+    	pen.moveTo(x0-10,y-yegrad); // axe haut
     	pen.lineTo(x0+10,y-yegrad);
     	pen.stroke();
     	y = y - yegrad
@@ -82,7 +82,7 @@ function main() {
     var y = y0
 
     while (y<yb) {
-    	pen.moveTo(x0,y+yegrad); // axe bas
+    	pen.moveTo(x0-10,y+yegrad); // axe bas
     	pen.lineTo(x0+10,y+yegrad);
     	pen.stroke();
     	y = y + yegrad
