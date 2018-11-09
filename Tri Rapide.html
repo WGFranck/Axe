@@ -1,0 +1,40 @@
+<html>
+<head>
+<title>Tri rapide</title>
+<meta charset="utf-8"/>
+<script type="text/javascript">
+
+function main() {
+	
+	/**
+	* Sort an array
+	* @param a  array to sort
+	* @param l index of the first element to sort
+	* @param r index of the last element to sort
+	*/
+	function quick_sort(a, l, r) { 
+		var p = a[l];
+		while (l<r) {
+			if (a[l]<p) {
+				a[l-1] = a[l];	
+				l = l+1;
+			}	else {
+					
+					/* échanger a[l] et a[r] */
+					r = r-1
+				}
+		}
+	}
+	
+	var a = [ 5, 8, 3, 10, 2, 3, 7, 9];	
+	selection_sort(a, 0, a.lenght - 1);
+	alert(a);
+	
+}
+</script>
+</head>
+<body onload="main()">
+
+
+<body/>
+<html>
