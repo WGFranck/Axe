@@ -1,3 +1,4 @@
+# Vendredi 11 Janvier
 #def main() :
  #   print("Ceci est la fonction main.")
  #   a = 5
@@ -21,9 +22,12 @@ def calcul(n) :
     return i
 
 def main() :
-    for i in range(1,101):
+    a = 0
+    b = 0
+    for i in range(1,1001):
         s = calcul(i)
-        print(i, s)
-    
-main()
-        
+        if b <= s:    
+            a = i
+            b = s
+            print(a,b)
+main()     
